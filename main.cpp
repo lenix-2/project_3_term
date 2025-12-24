@@ -149,10 +149,12 @@ public:
             string pStr = priorityToStr(t.priority);
             string dStr = t.deadline.toString();
 
-            printf("│%-3d│ %-25.25s│ %-11s│ %-11s│ %-10s│\n", 
-            t.id, t.description.c_str(), 
-            (t.completed ? GREEN : (expired ? RED : RESET)) + status + RESET,
-            dStr.c_str(), pStr.c_str());
+            printf("│%-3d│ %-25.25s│ %-20s│ %-11s│ %-10s│\n", 
+            t.id, 
+            t.description.c_str(), 
+            (t.completed ? (string(GREEN) + status + RESET) : (expired ? (string(RED) + status + RESET) : status)).c_str(),
+            dStr.c_str(), 
+            pStr.c_str());
         }
         cout << BOLD << "└───┴──────────────────────────┴────────────┴────────────┴───────────┘" << RESET << endl;
     }
